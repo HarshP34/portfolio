@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Harsh Patel | Backend Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* General */
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #0d1117;
+        color: #e6edf3;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Header Styling */
+      /* Header Styling */
+      /* Dark theme header to match index.html */
+      header {
+        background: #0a0e17; /* match page background */
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px; /* same as index.html feel */
+        border-bottom: 1px solid #1c1f26;
+        position: sticky; /* stick to top */
+        top: 0; /* at very top */
+        z-index: 1000; /* stays above content */
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #f5f5f5;
+      }
+
+      nav {
+        display: flex;
+        gap: 25px;
+      }
+
+      nav a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      nav a:hover {
+        color: #4da3ff; /* subtle hover */
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 2rem;
+      }
+
+      section {
+        margin-bottom: 4rem;
+      }
+
+      h2 {
+        color: #58a6ff;
+        margin-bottom: 1rem;
+      }
+
+      /* About */
+      .about {
+        text-align: center;
+        padding: 3rem 1rem;
+      }
+
+      .about h2 {
+        font-size: 2rem;
+      }
+
+      .about p {
+        max-width: 700px;
+        margin: 0.5rem auto;
+        color: #c9d1d9;
+      }
+
+      /* Skills */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+
+      .skill {
+        background: #161b22;
+        padding: 1rem;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid #30363d;
+        transition: transform 0.3s, background 0.3s;
+      }
+
+      .skill:hover {
+        background: #1c2128;
+        transform: translateY(-5px);
+      }
+
+      /* Projects */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: #161b22;
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid #30363d;
+        transition: transform 0.3s, background 0.3s;
+      }
+
+      .card:hover {
+        background: #1c2128;
+        transform: translateY(-8px);
+      }
+
+      .card h3 {
+        margin-top: 0;
+        color: #58a6ff;
+      }
+
+      .card p {
+        font-size: 0.95rem;
+        color: #c9d1d9;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 8px 16px;
+        background: #238636;
+        color: white;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #2ea043;
+      }
+      .project-description {
+        max-height: 80px; /* show only first ~4 lines */
+        overflow: hidden;
+        position: relative;
+        transition: max-height 0.5s ease;
+      }
+
+      .project-description.expanded {
+        max-height: 500px; /* enough to show all */
+        transition: max-height 0.5s ease;
+      }
+
+      .see-more {
+        background: none;
+        border: none;
+        color: #4da6ff;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .see-more:hover {
+        text-decoration: underline;
+      }
+
+      /* Experience Section */
+      #experience {
+        margin-bottom: 4rem;
+      }
+
+      .experience {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .experience-card {
+        background: #161b22;
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid #30363d;
+        transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+      }
+
+      .experience-card:hover {
+        background: #1c2128;
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .experience-card h3 {
+        margin-top: 0;
+        color: #58a6ff;
+      }
+
+      .experience-card p {
+        font-size: 0.95rem;
+        color: #c9d1d9;
+        margin-top: 0.5rem;
+        line-height: 1.5;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid #30363d;
+        font-size: 0.9rem;
+        color: #8b949e;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <h1 style="color: #4da3ff">Harsh Patel</h1>
+      <nav>
+        <a
+          href="https://www.linkedin.com/in/harsh-patel-5ab2b21b4"
+          target="_blank"
+          title="LinkedIn"
+        >
+          <img
+            src="linkedin.svg"
+            alt="LinkedIn"
+            width="24"
+            height="24"
+            style="vertical-align: middle"
+          />
+        </a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- About -->
+      <section class="about">
+        <h2>Backend Software Engineer</h2>
+        <p>
+          Hi, I'm <b>Harsh Patel</b>, Backend Software Engineer with 3+ years of
+          experience designing and developing scalable microservices using
+          Node.js, PostgreSQL, and cloud services (AWS, GCP). Proven ability to
+          build RESTful APIs, integrate third-party services, and handle
+          high-volume data systems.
+        </p>
+      </section>
+
+      <!-- Projects Section (moved above Skills) -->
+        <h2>📂 Projects</h2>
+        <div class="projects">
+          <div class="card">
+            <div class="project-card">
+              <h3>Influencer Management Portal</h3>
+              <p
+                class="project-description"
+                data-full-text="
+    In-house Influencer Management Platform designed for the company's brands to oversee their Marketing campaigns, 
+    Track influencer collaborations, manage contracts, and analyze performance Metrics all in one centralized system. 
+    This project used Node.js, PostgreSQL, SQL, and RabbitMQ to ensure efficient data processing and scalability. 
+    Additionally, I have experience working with cloud platforms such as AWS and Google Cloud for scalable storage, 
+    data management, and deployment. Implemented authentication and webhook integrations for YouTube, Facebook, 
+    Microsoft, and TikTok to streamline user access and real-time data synchronization."
+              >
+                In-house Influencer Management Platform designed for the
+                company's brands to oversee their Marketing campaigns...
+              </p>
+              <button class="see-more">See more</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="project-card">
+              <h3>QueryBrand – Smart Product Knowledge System</h3>
+              <p
+                class="project-description"
+                data-full-text="QueryBrand is a custom Retrieval-Augmented Generation (RAG) system built with LangChain
+                 that enables brands to provide instant, accurate answers about their products using their own data.
+                 The system ingests product information, generates vector embeddings, and retrieves the most relevant 
+                context to answer user queries, allowing customers and teams to interact naturally and get reliable, 
+                brand-specific insights without retraining a full model."
+              >
+                QueryBrand is a custom Retrieval-Augmented Generation (RAG)
+                 system built with LangChain that enables br...
+              </p>
+              <button class="see-more">See more</button>
+            </div>
+          </div>
+          </div>
+          <div class="card">
+            <h3>Complaint Dashboard</h3>
+              <p
+                class="project-description"
+                data-full-text="Complaint Dashboard is a centralized platform that collects complaints 
+                submitted through brand websites and provides an organized view for effective handling 
+                and resolution. It aggregates incoming complaints, categorizes them, and displays key 
+                statistics such as complaint volume, resolution status, response time, and trends over 
+                time. This enables teams to monitor issues in real time, prioritize critical cases, 
+                and gain actionable insights to improve customer satisfaction and overall brand experience."
+              >
+                Complaint Dashboard is a centralized platform that collects complaints 
+                submitted through brand websites...
+              </p>
+              <button class="see-more">See more</button>
+          </div>
+        </div>
+      </section> -->
+      <section id="projects">
+        <h2>📂 Projects</h2>
+        <div class="projects">
+          <!-- Influencer Management Portal -->
+          <div class="card">
+            <h3>Influencer Management Portal</h3>
+            <p
+              class="project-description"
+              data-full-text="In-house Influencer Management Platform designed for the company's brands 
+              to oversee their marketing campaigns, track influencer collaborations, manage contracts, 
+              and analyze performance metrics all in one centralized system. This project used Node.js,
+              PostgreSQL, SQL, and RabbitMQ to ensure efficient data processing and scalability. Implemented
+              authentication and webhook integrations for YouTube, Facebook, Microsoft, and TikTok."
+            >
+              Manage campaigns, influencers, and performance analytics...
+            </p>
+            <button class="see-more">See more</button>
+          </div>
+
+          <!-- QueryBrand -->
+          <div class="card">
+            <h3>QueryBrand – Smart Product Knowledge System</h3>
+            <p
+              class="project-description"
+              data-full-text="QueryBrand is a custom Retrieval-Augmented Generation (RAG) system built 
+              with LangChain that enables brands to provide instant, accurate answers about their products 
+              using their own data. The system ingests product information, generates vector embeddings,
+              and retrieves the most relevant context to answer user queries, allowing customers and teams 
+              to interact naturally and get reliable, brand-specific insights without retraining a full model."
+            >
+              AI system delivering brand-specific product answers...
+            </p>
+            <button class="see-more">See more</button>
+          </div>
+
+          <!-- Complaint Dashboard -->
+          <div class="card">
+            <h3>Complaint Dashboard</h3>
+            <p
+              class="project-description"
+              data-full-text="Complaint Dashboard is a centralized platform that collects complaints submitted
+              through brand websites and provides an organized view for effective handling and resolution. It
+              aggregates incoming complaints, categorizes them, and displays key statistics such as complaint 
+              volume, resolution status, response time, and trends over time. This enables teams to monitor issues 
+              in real time, prioritize critical cases, and gain actionable insights to improve customer satisfaction 
+              and overall brand experience."
+            >
+              Track and resolve website complaints efficiently...
+            </p>
+            <button class="see-more">See more</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience">
+        <h2>💼 Experience</h2>
+        <div class="experience">
+          <!-- Zuru Tech India -->
+          <div class="card experience-card">
+            <h3>2023 - Present | Zuru Tech India</h3>
+            <p>
+              Currently working as a Backend Software Engineer on a
+              comprehensive Influencer Management Platform that empowers brands
+              to discover and onboard strategic influencers aligned with their
+              brand identity, featuring advanced campaign management and
+              performance analytics dashboards. Worked with modern technologies
+              including Node.js, PostgreSQL, SQL, and RabbitMQ to ensure
+              efficient data processing, optimal scalability, and reliable
+              system architecture. Additionally, gained expertise with cloud
+              platforms like AWS and Google Cloud while developing hands-on
+              experience in integrating third-party APIs for Instagram, TikTok,
+              YouTube, and Microsoft to deliver enhanced platform capabilities.
+            </p>
+          </div>
+          <!-- Aarti Industries Ltd. -->
+          <div class="card experience-card">
+            <h3>2021 - 2022 | Aarti Industries Ltd.</h3>
+            <p>
+              Worked on collecting, analyzing, and managing data from various
+              industrial instruments in the field. Ensured accurate
+              measurements, recorded operational data, and supported backend
+              reporting systems for process optimization.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills">
+        <h2>🛠 Skills</h2>
+        <div class="skills">
+          <div class="skill">Node.js</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">PostgreSQL</div>
+          <div class="skill">MongoDB</div>
+          <div class="skill">SQL</div>
+          <div class="skill">RabbitMQ</div>
+          <div class="skill">BullMQ</div>
+          <div class="skill">Redis</div>
+          <div class="skill">AWS</div>
+          <div class="skill">System Design</div>
+          <div class="skill">Docker</div>
+          <div class="skill">LangChain</div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      © 2025 Harsh Patel | Built with ❤️ using HTML, CSS, and SQLite
+    </footer>
+  </body>
+  <script>
+    document.querySelectorAll(".see-more").forEach((button) => {
+      button.addEventListener("click", () => {
+        const description = button.previousElementSibling;
+        const fullText = description.getAttribute("data-full-text").trim();
+        const shortText = fullText.substring(0, 120) + "..."; // limit to ~120 chars
+
+        if (description.classList.contains("expanded")) {
+          description.textContent = shortText;
+          description.classList.remove("expanded");
+          button.textContent = "See more";
+        } else {
+          description.textContent = fullText;
+          description.classList.add("expanded");
+          button.textContent = "See less";
+        }
+      });
+    });
+  </script>
+</html>
