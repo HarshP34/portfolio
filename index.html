@@ -942,8 +942,7 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
-    formData.append("access_key", process.env.WEB3FORMS_ACCESS_KEY); // Replace with your actual access key
-
+    formData.append("access_key", 'a6e17612-b8bd-4d15-9e8b-fbc9c94ec84f'); // public access key
     const originalText = submitBtn.textContent;
 
     submitBtn.textContent = "Sending...";
