@@ -903,72 +903,74 @@
     <footer>
       © 2025 Harsh Patel | Built with ❤️ using HTML, CSS, and JavaScript
     </footer>
-  </body>
-  <script>
-    // Project Description Toggle with Smooth Animation
-    document.querySelectorAll(".see-more").forEach((button) => {
-      button.addEventListener("click", (e) => {
-        e.preventDefault();
-        const description = button.previousElementSibling;
-        const fullText = description.getAttribute("data-full-text").trim();
-        const shortText = fullText.substring(0, 80) + "..."; // limit to ~80 chars
 
-        if (description.classList.contains("expanded")) {
-          // Smooth collapse animation
-          description.classList.add('collapsing');
-          description.classList.remove('expanded');
-          
-          // Wait for animation to start before changing text
-          setTimeout(() => {
-            description.textContent = shortText;
-            description.classList.remove('collapsing');
-            button.innerHTML = "Read more →";
-          }, 400); // Half of the transition time
-        } else {
-          // Smooth expand animation
-          description.textContent = fullText;
-          // Force reflow to ensure transition happens
-          void description.offsetHeight;
-          description.classList.add("expanded");
-          button.innerHTML = "Show less ↑";
-        }
+    <script>
+      // Project Description Toggle with Smooth Animation
+      document.querySelectorAll(".see-more").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+          const description = button.previousElementSibling;
+          const fullText = description.getAttribute("data-full-text").trim();
+          const shortText = fullText.substring(0, 80) + "..."; // limit to ~80 chars
+
+          if (description.classList.contains("expanded")) {
+            // Smooth collapse animation
+            description.classList.add('collapsing');
+            description.classList.remove('expanded');
+            
+            // Wait for animation to start before changing text
+            setTimeout(() => {
+              description.textContent = shortText;
+              description.classList.remove('collapsing');
+              button.innerHTML = "Read more →";
+            }, 400); // Half of the transition time
+          } else {
+            // Smooth expand animation
+            description.textContent = fullText;
+            // Force reflow to ensure transition happens
+            void description.offsetHeight;
+            description.classList.add("expanded");
+            button.innerHTML = "Show less ↑";
+          }
+        });
       });
-    });
 
-const form = document.getElementById('contactForm');
-const submitBtn = form.querySelector('button[type="submit"]');
+      // Contact Form Handler
+      const form = document.getElementById('contactForm');
+      const submitBtn = form.querySelector('button[type="submit"]');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    const formData = new FormData(form);
-    formData.append("access_key", 'a6e17612-b8bd-4d15-9e8b-fbc9c94ec84f'); // public access key
-    const originalText = submitBtn.textContent;
+        const formData = new FormData(form);
+        formData.append("access_key", 'a6e17612-b8bd-4d15-9e8b-fbc9c94ec84f');
+        const originalText = submitBtn.textContent;
 
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
 
-    try {
-        const response = await fetch("https://api.web3forms.com/submit", {
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
             body: formData
-        });
+          });
 
-        const data = await response.json();
+          const data = await response.json();
 
-        if (response.ok) {
+          if (response.ok) {
             alert("Success! Your message has been sent.");
             form.reset();
-        } else {
+          } else {
             alert("Error: " + data.message);
-        }
+          }
 
-    } catch (error) {
-        alert("Something went wrong. Please try again.");
-    } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }
-});
-  </script>
+        } catch (error) {
+          alert("Something went wrong. Please try again.");
+        } finally {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    </script>
+  </body>
 </html>
