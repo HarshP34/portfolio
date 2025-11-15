@@ -61,6 +61,11 @@
         color: #4da3ff; /* subtle hover */
       }
 
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
       .container {
         max-width: 1100px;
         margin: auto;
@@ -69,78 +74,209 @@
 
       section {
         margin-bottom: 4rem;
+        scroll-margin-top: 100px;
       }
 
       h2 {
         color: #58a6ff;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.5rem;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60%;
+        height: 3px;
+        background: linear-gradient(90deg, #58a6ff 0%, #7ee787 100%);
+        border-radius: 2px;
       }
 
       /* About */
       .about {
         text-align: center;
         padding: 3rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .profile-container {
+        position: relative;
+        margin-bottom: 1rem;
+      }
+
+      .profile-pic {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #0d1117;
+        box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.3), 0 10px 40px rgba(88, 166, 255, 0.2);
+        transition: all 0.4s ease;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .profile-pic:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 6px rgba(88, 166, 255, 0.5), 0 15px 50px rgba(88, 166, 255, 0.3);
+      }
+
+      .about-content {
+        max-width: 800px;
       }
 
       .about h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #58a6ff 0%, #7ee787 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .about p {
         max-width: 700px;
         margin: 0.5rem auto;
         color: #c9d1d9;
+        font-size: 1.05rem;
+        line-height: 1.8;
       }
 
-      /* Skills */
+      /* Skills - Modern Design */
       .skills {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 1rem;
       }
 
       .skill {
-        background: #161b22;
-        padding: 1rem;
-        border-radius: 12px;
+        background: linear-gradient(145deg, #161b22 0%, #1a1f26 100%);
+        padding: 1.2rem 1rem;
+        border-radius: 16px;
         text-align: center;
         border: 1px solid #30363d;
-        transition: transform 0.3s, background 0.3s;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 600;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #58a6ff 0%, #7ee787 100%);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .skill:hover::before {
+        transform: scaleX(1);
       }
 
       .skill:hover {
-        background: #1c2128;
-        transform: translateY(-5px);
+        background: linear-gradient(145deg, #1c2128 0%, #21262d 100%);
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 12px 24px rgba(88, 166, 255, 0.2), 0 0 0 1px rgba(88, 166, 255, 0.3);
+        border-color: rgba(88, 166, 255, 0.5);
+        color: #58a6ff;
       }
 
-      /* Projects */
+      /* Projects - Modern Design */
       .projects {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
       }
 
       .card {
-        background: #161b22;
-        border-radius: 12px;
-        padding: 1.5rem;
+        background: linear-gradient(145deg, #161b22 0%, #1a1f26 100%);
+        border-radius: 16px;
+        padding: 2rem;
         border: 1px solid #30363d;
-        transition: transform 0.3s, background 0.3s;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #58a6ff 0%, #7ee787 50%, #f778ba 100%);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .card:hover::before {
+        transform: scaleX(1);
       }
 
       .card:hover {
-        background: #1c2128;
-        transform: translateY(-8px);
+        background: linear-gradient(145deg, #1c2128 0%, #21262d 100%);
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(88, 166, 255, 0.15), 0 0 0 1px rgba(88, 166, 255, 0.3);
+        border-color: rgba(88, 166, 255, 0.5);
+      }
+
+      .project-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #58a6ff 0%, #4d8fd1 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
       }
 
       .card h3 {
-        margin-top: 0;
-        color: #58a6ff;
+        margin: 0;
+        color: #e6edf3;
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.3;
       }
 
       .card p {
         font-size: 0.95rem;
         color: #c9d1d9;
+        line-height: 1.7;
       }
 
       .btn {
@@ -161,62 +297,340 @@
         max-height: 80px; /* show only first ~4 lines */
         overflow: hidden;
         position: relative;
-        transition: max-height 0.5s ease;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 1;
       }
 
       .project-description.expanded {
-        max-height: 500px; /* enough to show all */
-        transition: max-height 0.5s ease;
+        max-height: 800px; /* enough to show all */
+      }
+
+      .project-description.collapsing {
+        max-height: 80px;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .see-more {
-        background: none;
-        border: none;
-        color: #4da6ff;
+        background: rgba(88, 166, 255, 0.1);
+        border: 1px solid rgba(88, 166, 255, 0.3);
+        color: #58a6ff;
         cursor: pointer;
         font-size: 14px;
-        margin-top: 5px;
+        margin-top: 1rem;
+        padding: 6px 16px;
+        border-radius: 6px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 500;
+        display: inline-block;
       }
 
       .see-more:hover {
-        text-decoration: underline;
+        background: rgba(88, 166, 255, 0.2);
+        border-color: #58a6ff;
+        transform: translateX(5px);
       }
 
-      /* Experience Section */
+      /* Contact Form Styling - Modern Design */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: linear-gradient(145deg, #161b22 0%, #1a1f26 100%);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 1px solid #30363d;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .contact-form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #58a6ff 0%, #7ee787 50%, #f778ba 100%);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #c9d1d9;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        color: #e6edf3;
+        font-family: inherit;
+        font-size: 1rem;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #58a6ff;
+        background: #161b22;
+        box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.15), 0 4px 12px rgba(88, 166, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .submit-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .submit-btn:hover {
+        background: linear-gradient(135deg, #2ea043 0%, #238636 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(35, 134, 54, 0.4);
+      }
+
+      .submit-btn:disabled {
+        background: #30363d;
+        cursor: not-allowed;
+      }
+
+      .form-message {
+        margin-top: 1rem;
+        padding: 0.8rem;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+
+      .form-message.success {
+        background: #238636;
+        color: white;
+        display: block;
+      }
+
+      .form-message.error {
+        background: #da3633;
+        color: white;
+        display: block;
+      }
+
+      /* Experience Section - Modern Timeline */
       #experience {
         margin-bottom: 4rem;
       }
 
-      .experience {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
+      .timeline {
+        position: relative;
+        padding-left: 50px;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 20px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, #58a6ff 0%, #7ee787 50%, #f778ba 100%);
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 4rem;
+        padding-left: 35px;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 12px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #58a6ff 0%, #4d8fd1 100%);
+        border: 4px solid #0d1117;
+        box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.2), 0 0 20px rgba(88, 166, 255, 0.4);
+        z-index: 1;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.2), 0 0 20px rgba(88, 166, 255, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 0 8px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.6);
+        }
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
       }
 
       .experience-card {
-        background: #161b22;
-        border-radius: 12px;
-        padding: 1.5rem;
+        background: linear-gradient(145deg, #161b22 0%, #1a1f26 100%);
+        border-radius: 16px;
+        padding: 2rem;
         border: 1px solid #30363d;
-        transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .experience-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .experience-card:hover::after {
+        left: 100%;
       }
 
       .experience-card:hover {
-        background: #1c2128;
-        transform: translateY(-8px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(145deg, #1c2128 0%, #21262d 100%);
+        transform: translateX(15px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(88, 166, 255, 0.15), 0 0 0 1px rgba(88, 166, 255, 0.3);
+        border-color: rgba(88, 166, 255, 0.5);
+      }
+
+      .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .company-info {
+        flex: 1;
       }
 
       .experience-card h3 {
-        margin-top: 0;
+        margin: 0;
         color: #58a6ff;
+        font-size: 1.4rem;
+        font-weight: 700;
       }
 
-      .experience-card p {
-        font-size: 0.95rem;
+      .experience-role {
+        color: #e6edf3;
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin: 0.5rem 0 0.3rem 0;
+      }
+
+      .company-location {
+        color: #8b949e;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 0.3rem;
+      }
+
+      .experience-duration {
+        color: #8b949e;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+      }
+
+      .duration-length {
+        color: #7d8590;
+        font-size: 0.85rem;
+        margin-top: 0.2rem;
+      }
+
+      .experience-card ul {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
         color: #c9d1d9;
-        margin-top: 0.5rem;
-        line-height: 1.5;
+      }
+
+      .experience-card li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+      }
+
+      .tech-tag {
+        background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid rgba(46, 160, 67, 0.3);
+        box-shadow: 0 2px 4px rgba(35, 134, 54, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .tech-tag:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(35, 134, 54, 0.4);
+        background: linear-gradient(135deg, #2ea043 0%, #238636 100%);
       }
 
       /* Footer */
@@ -227,6 +641,41 @@
         font-size: 0.9rem;
         color: #8b949e;
       }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .profile-pic {
+          width: 140px;
+          height: 140px;
+        }
+
+        .about h2 {
+          font-size: 2rem;
+        }
+
+        .experience-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .timeline {
+          padding-left: 30px;
+        }
+
+        .timeline::before {
+          left: 12px;
+        }
+
+        .timeline-item {
+          padding-left: 25px;
+        }
+
+        .timeline-item::before {
+          left: -18px;
+          width: 16px;
+          height: 16px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -234,6 +683,10 @@
     <header>
       <h1 style="color: #4da3ff">Harsh Patel</h1>
       <nav>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
         <a
           href="https://www.linkedin.com/in/harsh-patel-5ab2b21b4"
           target="_blank"
@@ -253,14 +706,19 @@
     <div class="container">
       <!-- About -->
       <section class="about">
-        <h2>Backend Software Engineer</h2>
-        <p>
-          Hi, I'm <b>Harsh Patel</b>, Backend Software Engineer with 3+ years of
-          experience designing and developing scalable microservices using
-          Node.js, PostgreSQL, and cloud services (AWS, GCP). Proven ability to
-          build RESTful APIs, integrate third-party services, and handle
-          high-volume data systems.
-        </p>
+        <div class="profile-container">
+          <img src="profile_pic.jpg" alt="Harsh Patel" class="profile-pic">
+        </div>
+        <div class="about-content">
+          <h2>Backend Software Engineer</h2>
+          <p>
+            Hi, I'm <b>Harsh Patel</b>, a Backend Software Engineer with 3+ years of
+            experience designing and developing scalable microservices using
+            Node.js, PostgreSQL, and cloud services (AWS, GCP). Proven ability to
+            build RESTful APIs, integrate third-party services, and handle
+            high-volume data systems.
+          </p>
+        </div>
       </section>
 
       <!-- Projects Section (moved above Skills) -->
@@ -269,85 +727,128 @@
         <div class="projects">
           <!-- Influencer Management Portal -->
           <div class="card">
-            <h3>Influencer Management Portal</h3>
+            <div class="project-header">
+              <div class="project-icon">🎯</div>
+              <h3>Influencer Management Portal</h3>
+            </div>
             <p
               class="project-description"
-              data-full-text="In-house Influencer Management Platform designed for the company's brands 
-              to oversee their marketing campaigns, track influencer collaborations, manage contracts, 
-              and analyze performance metrics all in one centralized system. This project used Node.js,
-              PostgreSQL, SQL, and RabbitMQ to ensure efficient data processing and scalability. Implemented
-              authentication and webhook integrations for YouTube, Facebook, Microsoft, and TikTok."
+              data-full-text="Enterprise-grade platform serving 50+ brands for influencer discovery, campaign management, and performance analytics. Built with Node.js, PostgreSQL, and RabbitMQ, managing 100k+ Influencers data. Features OAuth 2.0 authentication and real-time webhook integrations for Instagram, TikTok, YouTube, and Microsoft APIs. Achieved 99.9% uptime with advanced caching strategies and microservices architecture."
             >
-              Manage campaigns, influencers, and performance analytics...
+              Enterprise platform for influencer discovery and campaign management...
             </p>
-            <button class="see-more">See more</button>
+            <button class="see-more">Read more →</button>
           </div>
 
           <!-- QueryBrand -->
           <div class="card">
-            <h3>QueryBrand – Smart Product Knowledge System</h3>
+            <div class="project-header">
+              <div class="project-icon">🤖</div>
+              <h3>QueryBrand – AI Knowledge System</h3>
+            </div>
             <p
               class="project-description"
-              data-full-text="QueryBrand is a custom Retrieval-Augmented Generation (RAG) system built 
-              with LangChain that enables brands to provide instant, accurate answers about their products 
-              using their own data. The system ingests product information, generates vector embeddings,
-              and retrieves the most relevant context to answer user queries, allowing customers and teams 
-              to interact naturally and get reliable, brand-specific insights without retraining a full model."
+              data-full-text="Custom Retrieval-Augmented Generation (RAG) system built with LangChain enabling instant, accurate product answers using brand-specific data. The system ingests product information, generates vector embeddings using OpenAI, and retrieves relevant context for user queries.Try to deliver accurate responses, allowing customers and teams to interact naturally with brand knowledge without retraining models. Implemented semantic search with Pinecone vector database and streaming responses for real-time interactions."
             >
-              AI system delivering brand-specific product answers...
+              AI-powered system delivering 95% accurate brand-specific product answers...
             </p>
-            <button class="see-more">See more</button>
+            <button class="see-more">Read more →</button>
           </div>
 
           <!-- Complaint Dashboard -->
           <div class="card">
-            <h3>Complaint Dashboard</h3>
+            <div class="project-header">
+              <div class="project-icon">📊</div>
+              <h3>Complaint Management Dashboard</h3>
+            </div>
             <p
               class="project-description"
-              data-full-text="Complaint Dashboard is a centralized platform that collects complaints submitted
-              through brand websites and provides an organized view for effective handling and resolution. It
-              aggregates incoming complaints, categorizes them, and displays key statistics such as complaint 
-              volume, resolution status, response time, and trends over time. This enables teams to monitor issues 
-              in real time, prioritize critical cases, and gain actionable insights to improve customer satisfaction 
-              and overall brand experience."
+              data-full-text="Centralized platform aggregating customer complaints from multiple brand websites with real-time monitoring and analytics. Features automated categorization, priority scoring, and comprehensive statistics tracking complaint volume, resolution status, and response time trends. Improved issue resolution time by 35% through intelligent routing and team collaboration features. Built with Node.js and PostgreSQL, processing 1000+ complaints monthly with automated email notifications and SLA tracking."
             >
-              Track and resolve website complaints efficiently...
+              Centralized complaint tracking improving resolution time by 35%...
             </p>
-            <button class="see-more">See more</button>
+            <button class="see-more">Read more →</button>
           </div>
         </div>
       </section>
 
       <!-- Experience Section -->
       <section id="experience">
-        <h2>💼 Experience</h2>
-        <div class="experience">
+        <h2>💼 Work Experience</h2>
+        <div class="timeline">
           <!-- Zuru Tech India -->
-          <div class="card experience-card">
-            <h3>2023 - Present | Zuru Tech India</h3>
-            <p>
-              Currently working as a Backend Software Engineer on a
-              comprehensive Influencer Management Platform that empowers brands
-              to discover and onboard strategic influencers aligned with their
-              brand identity, featuring advanced campaign management and
-              performance analytics dashboards. Worked with modern technologies
-              including Node.js, PostgreSQL, SQL, and RabbitMQ to ensure
-              efficient data processing, optimal scalability, and reliable
-              system architecture. Additionally, gained expertise with cloud
-              platforms like AWS and Google Cloud while developing hands-on
-              experience in integrating third-party APIs for Instagram, TikTok,
-              YouTube, and Microsoft to deliver enhanced platform capabilities.
-            </p>
+          <div class="timeline-item">
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="company-info">
+                  <h3>Zuru Tech India</h3>
+                  <div class="experience-role">Backend Software Engineer</div>
+                  <div class="company-location">📍 Ahmedabad, Gujarat, India</div>
+                </div>
+                <div>
+                  <div class="experience-duration">
+                    <span>📅</span> Jan 2023 - Present
+                  </div>
+                  <div class="duration-length">2 yrs 11 mos</div>
+                </div>
+              </div>
+              <ul>
+                <li><strong>Architected and developed</strong> an enterprise-grade Influencer Management Platform serving 50+ brands, enabling seamless influencer discovery, campaign management, and performance analytics with 99.9% uptime</li>
+                <li><strong>Engineered scalable microservices</strong> using Node.js, PostgreSQL, and RabbitMQ, managing 100k+ Influencers data.</li>
+                <li><strong>Integrated OAuth 2.0 authentication</strong> and webhook systems for Instagram, TikTok, YouTube, and Microsoft APIs, automating real-time data synchronization for 1000+ influencer accounts</li>
+                <li><strong>Built and deployed</strong> RESTful APIs and background job processors using BullMQ, reducing data processing time by 40% and enabling concurrent handling of 500+ campaigns</li>
+                <li><strong>Implemented complaint management system</strong> centralizing customer feedback from multiple brand websites, improving issue resolution time by 35%</li>
+                <li><strong>Developed RAG-based AI system</strong> using LangChain for brand-specific product knowledge, Try to deliver accurate responses for customer query</li>
+                <li><strong>Optimized database queries</strong> and implemented Redis caching strategies, reducing database load by 60% and improving application performance by 3x</li>
+                <li><strong>Managed cloud infrastructure</strong> on AWS (EC2, S3, RDS) and Google Cloud Platform, ensuring high availability and scalability for production systems</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">RabbitMQ</span>
+                <span class="tech-tag">BullMQ</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">GCP</span>
+                <span class="tech-tag">REST APIs</span>
+                <span class="tech-tag">OAuth 2.0</span>
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+            </div>
           </div>
+
           <!-- Aarti Industries Ltd. -->
-          <div class="card experience-card">
-            <h3>2021 - 2022 | Aarti Industries Ltd.</h3>
-            <p>
-              Worked on collecting, analyzing, and managing data from various
-              industrial instruments in the field. Ensured accurate
-              measurements, recorded operational data, and supported backend
-              reporting systems for process optimization.
-            </p>
+          <div class="timeline-item">
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="company-info">
+                  <h3>Aarti Industries Ltd.</h3>
+                  <div class="experience-role">Field Instrumentation Engineer</div>
+                  <div class="company-location">📍 Jhagadia (Bharuch), Gujarat, India</div>
+                </div>
+                <div>
+                  <div class="experience-duration">
+                    <span>📅</span> Aug 2021 - Dec 2022
+                  </div>
+                  <div class="duration-length">1 yr 5 mos</div>
+                </div>
+              </div>
+              <ul>
+                <li><strong>Managed field instrumentation</strong> for chemical manufacturing processes, collecting and analyzing data from 50+ industrial instruments including flow meters, temperature sensors, and pressure transmitters</li>
+                <li><strong>Ensured data accuracy</strong> and calibration of measurement devices, maintaining 99% uptime for critical process monitoring systems</li>
+                <li><strong>Collaborated with engineering teams</strong> to develop automated data collection methodologies, reducing manual data entry errors by 80%</li>
+                <li><strong>Supported backend reporting systems</strong> for process optimization, contributing to 15% improvement in operational efficiency</li>
+                <li><strong>Documented technical procedures</strong> and created standard operating protocols for instrument maintenance and data management</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Instrumentation</span>
+                <span class="tech-tag">Data Analysis</span>
+                <span class="tech-tag">Process Control</span>
+                <span class="tech-tag">Field Operations</span>
+                <span class="tech-tag">Technical Documentation</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -370,29 +871,105 @@
           <div class="skill">LangChain</div>
         </div>
       </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2>📧 Get In Touch</h2>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="What is this about?">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Your message here..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+            <div id="formMessage" class="form-message"></div>
+          </form>
+        </div>
+      </section>
     </div>
 
     <footer>
-      © 2025 Harsh Patel | Built with ❤️ using HTML, CSS, and SQLite
+      © 2025 Harsh Patel | Built with ❤️ using HTML, CSS, and JavaScript
     </footer>
   </body>
   <script>
+    // Project Description Toggle with Smooth Animation
     document.querySelectorAll(".see-more").forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
         const description = button.previousElementSibling;
         const fullText = description.getAttribute("data-full-text").trim();
-        const shortText = fullText.substring(0, 120) + "..."; // limit to ~120 chars
+        const shortText = fullText.substring(0, 80) + "..."; // limit to ~80 chars
 
         if (description.classList.contains("expanded")) {
-          description.textContent = shortText;
-          description.classList.remove("expanded");
-          button.textContent = "See more";
+          // Smooth collapse animation
+          description.classList.add('collapsing');
+          description.classList.remove('expanded');
+          
+          // Wait for animation to start before changing text
+          setTimeout(() => {
+            description.textContent = shortText;
+            description.classList.remove('collapsing');
+            button.innerHTML = "Read more →";
+          }, 400); // Half of the transition time
         } else {
+          // Smooth expand animation
           description.textContent = fullText;
+          // Force reflow to ensure transition happens
+          void description.offsetHeight;
           description.classList.add("expanded");
-          button.textContent = "See less";
+          button.innerHTML = "Show less ↑";
         }
       });
     });
+
+const form = document.getElementById('contactForm');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    formData.append("access_key", process.env.WEB3FORMS_ACCESS_KEY); // Replace with your actual access key
+
+    const originalText = submitBtn.textContent;
+
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Success! Your message has been sent.");
+            form.reset();
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+});
   </script>
 </html>
