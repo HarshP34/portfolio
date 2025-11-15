@@ -44,11 +44,6 @@ The website uses **Web3Forms** - a free email forwarding service.
    ```
 7. Replace `YOUR_WEB3FORMS_ACCESS_KEY` with your actual key
 
-**Example:**
-```javascript
-formData.append('access_key', 'a1b2c3d4-e5f6-7890-abcd-ef1234567890');
-```
-
 ### 2. Running the Website
 
 Simply open `index.html` in any modern web browser:
